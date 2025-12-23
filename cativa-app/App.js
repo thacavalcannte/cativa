@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import LogInPage from './pages/LogInPage';
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Segundo commit! SafeAreaView adicionada</Text>
+      <LogInPage/>
       <StatusBar style="auto" />
     </SafeAreaView>
   );

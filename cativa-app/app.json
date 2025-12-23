@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "cativa-app",
-    "slug": "cativa-app",
+    "slug": "cativa",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,6 +24,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b02ffd5a-4319-43df-b1bc-6027d3ebbc3a"
+      }
+    },
+    "owner": "cativa-app"
   }
 }
