@@ -1,22 +1,25 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import LogInPage from './pages/LogInPage';
+import {View } from 'react-native';
+import{ PaperProvider } from 'react-native-paper';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+//import LogInPage from './pages/LogInPage';
+import SignUpPage from './pages/SignUpPage';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <LogInPage/>
-      <StatusBar style="auto" />
-    </SafeAreaView>
+
+    // tive que trocar o safeareaview pelo safeareaprovider porque tava dando erro com o appbar um erro de 'displayName'
+    <SafeAreaProvider>
+      <PaperProvider>
+        <View style={{flex: 1, backgroundColor: '#fff'}}>
+          <SignUpPage />
+          {/* <LogInPage/> */}
+          <StatusBar style="auto" />
+        </View>
+      </PaperProvider>
+    </SafeAreaProvider>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
