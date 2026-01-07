@@ -4,7 +4,8 @@ import {View } from 'react-native';
 import{ PaperProvider } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 //import LogInPage from './pages/LogInPage';
-import SignUpPage from './pages/SignUpPage';
+// import SignUpPage from './pages/SignUpPage';
+import HomePage from './pages/HomePage';
 
 export default function App() {
   return (
@@ -13,7 +14,8 @@ export default function App() {
     <SafeAreaProvider>
       <PaperProvider>
         <View style={{flex: 1, backgroundColor: '#fff'}}>
-          <SignUpPage />
+          {/* <SignUpPage /> */}
+          <HomePage/>
           {/* <LogInPage/> */}
           <StatusBar style="auto" />
         </View>
