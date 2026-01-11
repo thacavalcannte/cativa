@@ -14,7 +14,7 @@ export default function App() {
   
   return (
     <SafeAreaProvider>
-      <ConfirmPage/>
+      <HomePage/>
       {/* <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={LogInPage}/>
