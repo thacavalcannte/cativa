@@ -1,22 +1,21 @@
-import MaterialDesignIcons from "@react-native-vector-icons/material-design-icons";
-import { View, StyleSheet } from "react-native";
-import BottomNavigation from "../components/BottomNavigation";
+import { View, Text } from "react-native"
 
-
-const HomePage = () => {
+const HomePage= () => {
     return (
-        <View style={styles.container}>
-            <MaterialDesignIcons name="home" color="#ff0000" size={20} />
-
-            <BottomNavigation/>
+        <View style ={{
+            flex: 1,
+            backgroundColor: "#ffb39c",
+            justifyContent: "center",
+        }}>
+            <Text> Página inicial</Text>
+        <View style= {{
+            backgroundColor: "#4d5b70", // cor aleatória somente pra identidicar     
+        }}>
+            <Text> Bottom Navigation não vai ser chamado nas telas, mas no app</Text>
         </View>
-    );
-}
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#ffffffff", // Amarelo claro do fundo
-        justifyContent: "center",
-    },
-})
+        </View>
+    )
+};
+
+
 export default HomePage;

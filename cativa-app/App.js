@@ -1,27 +1,28 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import {View } from 'react-native';
-import{ PaperProvider } from 'react-native-paper';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
-//import LogInPage from './pages/LogInPage';
-// import SignUpPage from './pages/SignUpPage';
-import HomePage from './pages/HomePage';
+import { NavigationContainer } from "@react-navigation/native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import { createStackNavigator } from "@react-navigation/stack"
+
+import LogInPage from "./pages/LogInPage";
+import HomePage from "./pages/HomePage";
+import ListPage from "./pages/ListPage";
+import ProfilePage from "./pages/ProfilePage";
+import ConfirmPage from "./pages/ConfirmPage";
+
+const Stack = createStackNavigator();
 
 export default function App() {
+  
   return (
-
-    // tive que trocar o safeareaview pelo safeareaprovider porque tava dando erro com o appbar um erro de 'displayName'
     <SafeAreaProvider>
-      <PaperProvider>
-        <View style={{flex: 1, backgroundColor: '#fff'}}>
-          {/* <SignUpPage /> */}
-          <HomePage/>
-          {/* <LogInPage/> */}
-          <StatusBar style="auto" />
-        </View>
-      </PaperProvider>
+      <ConfirmPage/>
+      {/* <NavigationContainer>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={LogInPage}/>
+          <Stack.Screen name="Home" component={HomePage}/>
+          <Stack.Screen name="List" component={ListPage}/>
+          <Stack.Screen name="Profile" component={ProfilePage}/>
+          </Stack.Navigator>
+      </NavigationContainer> */}
     </SafeAreaProvider>
-
-  );
+  )
 }
-

@@ -13,7 +13,7 @@ const ListPage = () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
-        backgroundColor: "fffff",
+        backgroundColor: "#fffff",
         justifyContent: "center"
     },
 

@@ -1,12 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import { TextInput, Button } from "react-native-paper";
-
-//02/01/2026 - THA - pequeno avanço, mas a estrutura tá aparecendo certinho no expo. Ainda precisa autenticar com o google, linkar a tela de cadastro, ajustar o tamanho dos inputs (não sei porque não tá pegando a largura toda da tela), linkar o botão de entrar para a página inicial e verificar o que precisa (ou se precisa) mexer nesses useStates de email e senha
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../FirebaseConfig';
+import { useNavigation } from "@react-navigation/native";
 
 const LogInPage = () => {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
+
 
     return (
         <View style={styles.container}>
@@ -19,16 +21,20 @@ const LogInPage = () => {
             </View>
 
             <View style={styles.googleLogoContainer}>
-                <Image
-                    source={{uri: 'https://i.pinimg.com/1200x/50/96/e7/5096e746d19b9c407089dfd220471bbe.jpg'}}
-                    style={{ width: 25, height: 25,}}
-                    // tamanho que está no protótipo, mas contando o tamanho inteiro junto com a borda
-                />
+                <TouchableOpacity onPress={() => console.log('autenticar com google')} activeOpacity={0.7}> 
+                    {/* // ele faz ser clicável */}
+                    <Image
+                        source={{uri: 'https://i.pinimg.com/1200x/50/96/e7/5096e746d19b9c407089dfd220471bbe.jpg'}}
+                        style={{ width: 25, height: 25,}}
+                        // tamanho que está no protótipo, mas contando o tamanho inteiro junto com a borda
+                        
+                    />
+                </TouchableOpacity>
             </View>
 
             <View style={styles.formContainer}>
                 <TextInput 
-                    label="Email"
+                    label="E-mail"
                     value={email}
                     mode="outlined"
                     placeholder="Digite seu email"
@@ -37,7 +43,7 @@ const LogInPage = () => {
                     outlineColor="#5D8251" //ajustar para as cores da idv
                     style={styles.input} />
                 <TextInput 
-                    label="Password"
+                    label="Senha"
                     value={password}
                     mode="outlined"
                     placeholder="Digite sua senha"
@@ -52,8 +58,8 @@ const LogInPage = () => {
             {/* Botão de entrar */}
             <Button 
                     mode="contained" 
-                    onPress={() => console.log('Pressed')}
-                    buttonColor="5D8251" // ajustar para as cores da idv
+                    onPress={() => console.log('Logar com email e senha')}
+                    buttonColor="#5D8251" // ajustar para as cores da idv
                     style={styles.logInButton}>
                         Entrar
             </Button>
@@ -61,7 +67,9 @@ const LogInPage = () => {
             {/* Texto de se não tiver conta cadastre-se */}
             <View style={styles.signUpContainer}>
                 <Text style={styles.signUpText}>Ainda não tem conta?</Text>
-                <Text style={styles.signUpLink}>Cadastre-se</Text>
+                <TouchableOpacity onPress={() => console.log('navegar para a tela de cadastro')} activeOpacity={0.7}>
+                    <Text style={styles.signUpLink}>Cadastre-se</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
