@@ -1,4 +1,5 @@
 import { StyleSheet, Text, View } from "react-native"
+import BottomNavigationComponent from "../components/BottomNavigationComponent";
 
 const ListPage = () => {
     return (
@@ -6,6 +7,7 @@ const ListPage = () => {
             <Text>
                 Página de lista de eventos e exposições
             </Text>
+            <BottomNavigationComponent/>
         </View>
     )
 }

@@ -6,11 +6,6 @@ import { Appbar } from "react-native-paper";
 export default function ConfirmPage() {
     return (
         <SafeAreaView> 
-            <View>
-                <Appbar.Header>
-                    <Appbar.BackAction onPress={() => {}}  />
-                </Appbar.Header>
-            </View>
             <View style={{justifyContent:"center", alignItems:"center"}}>
                 <Image source={require('../assets/confirmpng.png')}
                         resizeMode="center"/>

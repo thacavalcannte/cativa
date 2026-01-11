@@ -1,78 +1,85 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import EventCard from "../components/EventCard";
+import BottomNavigationComponent from "../components/BottomNavigationComponent";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomePage = () => {
     return (
-        <ScrollView style={styles.container}>
+        <SafeAreaView style={{flex:1}}>
+            <View style={{flex:1}}>
+                <ScrollView style={styles.container}>
 
-            {/* Header */}
-            <View style={styles.header}>
-                <Text style={styles.title}>CATIVA</Text>
+                    {/* Header */}
+                    <View style={styles.header}>
+                        <Text style={styles.title}>CATIVA</Text>
 
-                <View style={styles.userRow}>
-                    <Text style={styles.helloText}>Olá, Maria Thaynara!</Text>
+                        <View style={styles.userRow}>
+                            <Text style={styles.helloText}>Olá, Maria Thaynara!</Text>
 
-                    <View style={styles.xpBadge}>
-                        <Text style={styles.xpText}>⭐ 120 XP</Text>
+                            <View style={styles.xpBadge}>
+                                <Text style={styles.xpText}>⭐ 120 XP</Text>
+                            </View>
+                        </View>
+
+                        <Text style={styles.subtitle}>
+                            A Cativa possui eventos e exposições esperando por você!
+                        </Text>
                     </View>
-                </View>
 
-                <Text style={styles.subtitle}>
-                    A Cativa possui eventos e exposições esperando por você!
-                </Text>
+                    {/* Eventos */}
+                    <View style={styles.sectionHeader}>
+                        <Text style={styles.sectionTitle}>Eventos →</Text>
+                    </View>
+
+                    <EventCard
+                        title="Arte e Memória na Xilogravura"
+                        author="Mestre Stênio Diniz"
+                        image={require("../assets/evento1.jpg")}
+                    />
+
+                    <EventCard
+                        title="Ceará Jogos: Roadshow"
+                        author="Asa Branca"
+                        image={require("../assets/evento2.jpg")}
+                    />
+
+                    {/* Exposições */}
+                    <View style={styles.sectionHeader}>
+                        <Text style={styles.sectionTitle}>Exposições →</Text>
+                    </View>
+
+                    <EventCard
+                        title="Eu no Sertão Monumental"
+                        author="César Moura"
+                        image={require("../assets/expo1.jpg")}
+                    />
+
+                    <EventCard
+                        title="Retratos do voo"
+                        author="Paulo Aléf"
+                        image={require("../assets/expo2.jpg")}
+                    />
+
+                    <EventCard
+                        title='Exposição Permanente: "O Sert..."'
+                        author="Fábrica Theodoro"
+                        image={require("../assets/expo3.jpg")}
+                    />
+
+                    {/* Voluntário */}
+                    <View style={styles.volunteerSection}>
+                        <Text style={styles.volunteerTitle}>Seja Voluntário</Text>
+
+                        <TouchableOpacity style={styles.volunteerButton}>
+                            <Text style={styles.volunteerButtonText}>Quero ser voluntário</Text>
+                        </TouchableOpacity>
+                    </View>
+                </ScrollView>
+            <BottomNavigationComponent/>
             </View>
-
-            {/* Eventos */}
-            <View style={styles.sectionHeader}>
-                <Text style={styles.sectionTitle}>Eventos →</Text>
-            </View>
-
-            <EventCard
-                title="Arte e Memória na Xilogravura"
-                author="Mestre Stênio Diniz"
-                image={require("../assets/evento1.jpg")}
-            />
-
-            <EventCard
-                title="Ceará Jogos: Roadshow"
-                author="Asa Branca"
-                image={require("../assets/evento2.jpg")}
-            />
-
-            {/* Exposições */}
-            <View style={styles.sectionHeader}>
-                <Text style={styles.sectionTitle}>Exposições →</Text>
-            </View>
-
-            <EventCard
-                title="Eu no Sertão Monumental"
-                author="César Moura"
-                image={require("../assets/expo1.jpg")}
-            />
-
-            <EventCard
-                title="Retratos do voo"
-                author="Paulo Aléf"
-                image={require("../assets/expo2.jpg")}
-            />
-
-            <EventCard
-                title='Exposição Permanente: "O Sert..."'
-                author="Fábrica Theodoro"
-                image={require("../assets/expo3.jpg")}
-            />
-
-            {/* Voluntário */}
-            <View style={styles.volunteerSection}>
-                <Text style={styles.volunteerTitle}>Seja Voluntário</Text>
-
-                <TouchableOpacity style={styles.volunteerButton}>
-                    <Text style={styles.volunteerButtonText}>Quero ser voluntário</Text>
-                </TouchableOpacity>
-            </View>
-
-        </ScrollView>
+        </SafeAreaView>
+    
     );
 };
 
@@ -81,6 +88,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         paddingHorizontal: 20,
+
     },
 
     header: {

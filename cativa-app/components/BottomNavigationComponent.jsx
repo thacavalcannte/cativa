@@ -1,30 +1,39 @@
 import { BottomNavigation } from "react-native-paper";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { StyleSheet } from "react-native";
 
-import HomePage from "../pages/HomePage";
-import ProfilePage from "../pages/ProfilePage";
-import ListPage from "../pages/ListPage";
+export default function BottomNavigationComponent() {
+  const navigation = useNavigation();
+  const route = useRoute();
 
-export default function BottomNavigationComponent () {
-    
+  const routes = [
+    { key: 'Home', title: 'Início', focusedIcon: 'home', unfocusedIcon: 'home-outline' },
+    { key: 'List', title: 'Conteúdo', focusedIcon: 'book-open-variant', unfocusedIcon: 'book-open-variant-outline' },
+    { key: 'Profile', title: 'Perfil', focusedIcon: 'account', unfocusedIcon: 'account-outline' },
+  ];
 
-    const renderScene = BottomNavigation.SceneMap({
-        home: HomePage,
-        list: ListPage,
-        profile: ProfilePage,
-    });
+  const getIndexFromRoute = () => {
+    const index = routes.findIndex(r => r.key === route.name);
+    return index === -1 ? 0 : index;
+  };
 
-    const routes = [
-        { key: 'home', title: 'Início', focusedIcon: 'home', unfocusedIcon: 'home-outline'},
-        { key: 'list', title: 'Lista de eventos e exposições', focusedIcon: 'book-open-variant', unfocusedIcon: 'book-open-variant-outline' },
-        { key: 'profile', title: 'Meu perfil', focusedIcon: 'account', unfocusedIcon: 'account-outline' },
-    ];
-
-
-    return (
-            <BottomNavigation
-            navigationState={{ index, routes }}
-            renderScene={renderScene}
-            />
+  return (
+    <BottomNavigation.Bar
+      navigationState={{
+        index: getIndexFromRoute(), routes,
+      }}
+      onTabPress={({ route }) => {
+        navigation.navigate(route.key);
+      }}
+      labeled
+      style={styles.bar}
+    />
   );
 }
 
+const styles = StyleSheet.create({
+  bar: {
+    width: '100%',
+    elevation: 8,
+  },
+});

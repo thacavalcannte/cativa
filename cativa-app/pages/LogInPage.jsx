@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../FirebaseConfig';
 import { useNavigation } from "@react-navigation/native";
 
-const LogInPage = () => {
+export default function LogInPage({navigation}) {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
 
@@ -58,7 +58,7 @@ const LogInPage = () => {
             {/* Botão de entrar */}
             <Button 
                     mode="contained" 
-                    onPress={() => console.log('Logar com email e senha')}
+                    onPress={() => navigation.replace('Home')}
                     buttonColor="#5D8251" // ajustar para as cores da idv
                     style={styles.logInButton}>
                         Entrar
@@ -67,7 +67,7 @@ const LogInPage = () => {
             {/* Texto de se não tiver conta cadastre-se */}
             <View style={styles.signUpContainer}>
                 <Text style={styles.signUpText}>Ainda não tem conta?</Text>
-                <TouchableOpacity onPress={() => console.log('navegar para a tela de cadastro')} activeOpacity={0.7}>
+                <TouchableOpacity onPress={() => navigation.replace('SignUp')} activeOpacity={0.7}>
                     <Text style={styles.signUpLink}>Cadastre-se</Text>
                 </TouchableOpacity>
             </View>
@@ -136,5 +136,3 @@ const styles = StyleSheet.create({
     },
 
 })
-
-export default LogInPage;

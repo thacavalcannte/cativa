@@ -1,25 +1,20 @@
 import React from "react";
 import { StyleSheet, View, ScrollView, Image, Text} from "react-native";
 import { TextInput, Button, Appbar, Divider } from "react-native-paper";
+import AppBar from "../components/AppBar";
 
 // fiz uma versão levemente adaptada do protótipo, vejam se é interessante deixarmos a opção de se cadastrar como o google ou se eu devo tirar. queria adicionar o textinho no divider "ou" mas nao achei como fazer
 // https://reactnative.dev/docs/button   linha de separaçao entre os inputs
 // const Separator = () => <View style={styles.separator} />;
-
-const SignUpPage = () => {
+export default function SignUpPage({navigation}) {
     const [name, setName] = React.useState("");
     const [email, setEmail] = React.useState("");
-    const [birthDate, setBirthDate] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [confirmPassword, setConfirmPassword] = React.useState("");  
 
     return (
         <View style={styles.container}>
-            {/* https://oss.callstack.com/react-native-paper/docs/components/Appbar/ */}
-            <Appbar.Header>
-                <Appbar.BackAction onPress={() => {}}  />
-                <Appbar.Content title="Cadastro"/>
-            </Appbar.Header>
+            <AppBar title={"Cadastro"}/>
             <ScrollView contentContainerStyle={styles.scrollContent}>
                 <View style={styles.formContainer}>
                 <TextInput 
@@ -28,15 +23,6 @@ const SignUpPage = () => {
                     mode="outlined"
                     placeholder="Digite seu nome"
                     onChangeText={name => setName(name)}
-                    activeOutlineColor="#5D8251"  //ajustar para as cores da idv
-                    outlineColor="#5D8251" //ajustar para as cores da idv
-                    style={styles.input} />
-                <TextInput 
-                    label="Data de nascimento"
-                    value={birthDate}
-                    mode="outlined"
-                    placeholder="XX/XX/XXXX"
-                    onChangeText={birthDate => setBirthDate(birthDate)}
                     activeOutlineColor="#5D8251"  //ajustar para as cores da idv
                     outlineColor="#5D8251" //ajustar para as cores da idv
                     style={styles.input} />
@@ -85,7 +71,7 @@ const SignUpPage = () => {
             {/* Botão de entrar */}
             <Button 
                     mode="contained" 
-                    onPress={() => console.log('Pressed')}
+                    onPress={() => navigation.replace('Home')}
                     buttonColor="#5D8251" // ajustar para as cores da idv
                     style={styles.signUpButton}>
                         Cadastrar
@@ -134,4 +120,3 @@ const styles = StyleSheet.create({
         marginTop: 10,
     },
 }); 
-export default SignUpPage;

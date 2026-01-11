@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { signOut } from "firebase/auth";
+import BottomNavigationComponent from "../components/BottomNavigationComponent";
 
 const ProfilePage = () => {
 
@@ -15,6 +16,7 @@ const ProfilePage = () => {
                     <Text> Log out (mudar para botão) </Text>
                 </TouchableOpacity>
             </View>
+            <BottomNavigationComponent/>
         </View>
     )
 }
