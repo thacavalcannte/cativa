@@ -13,7 +13,7 @@ export default function BottomNavigationComponent() {
   ];
 
   const getIndexFromRoute = () => {
-    // Verifica se a rota atual existe na lista, se não, não marca nada ou marca o padrão
+    
     const index = routes.findIndex(r => r.key === route.name);
     return index === -1 ? 0 : index;
   };
@@ -28,16 +28,13 @@ export default function BottomNavigationComponent() {
         navigation.navigate(route.key);
       }}
       labeled
+      activeColor="#FFFFFF" 
+      inactiveColor="#C8E6C9" 
+      style={styles.bar} 
       
-      // --- AQUI ESTÃO AS MUDANÇAS DE COR ---
-      activeColor="#FFFFFF" // Ícone e texto selecionado (Branco)
-      inactiveColor="#C8E6C9" // Ícone e texto NÃO selecionado (Verde claro)
-      style={styles.bar} // O fundo verde escuro está no styles.bar abaixo
-      
-      // Isso muda a cor da "bolinha" (pílula) atrás do ícone selecionado
       theme={{
         colors: {
-          secondaryContainer: 'rgba(255, 255, 255, 0.2)', // Uma transparência branca
+          secondaryContainer: 'rgba(255, 255, 255, 0.2)', 
         }
       }}
     />
@@ -48,6 +45,6 @@ const styles = StyleSheet.create({
   bar: {
     width: '100%',
     elevation: 8,
-    backgroundColor: '#385F38', // <--- O VERDE ESCURO DO SEU TEMA (Ajuste se precisar)
+    backgroundColor: '#385F38', 
   },
 });

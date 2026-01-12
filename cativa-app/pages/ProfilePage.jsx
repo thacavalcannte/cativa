@@ -1,20 +1,17 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons'; // Ícones
+import { MaterialIcons } from '@expo/vector-icons'; 
 import { signOut } from "firebase/auth";
-import { auth } from '../FirebaseConfig'; // <--- VERIFIQUE ESSE CAMINHO! 
-// Se o arquivo for firebaseConfig.js (minúsculo), mude aqui.
+import { auth } from '../FirebaseConfig'; 
 
 import BottomNavigationComponent from "../components/BottomNavigationComponent";
 
 export default function ProfilePage({ navigation }) {
 
-  // Função para lidar com o logout
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
         console.log("Usuário deslogou!");
-        // Opcional: Forçar a ida para a tela de Login após sair
         navigation.navigate("Login"); 
       })
       .catch((error) => {
@@ -27,7 +24,6 @@ export default function ProfilePage({ navigation }) {
       
       {/* Cabeçalho */}
       <View style={styles.header}>
-        {/* Botão de voltar (apenas visual por enquanto) */}
         <TouchableOpacity onPress={() => navigation.goBack()}>
             <MaterialIcons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
@@ -82,7 +78,6 @@ export default function ProfilePage({ navigation }) {
   );
 }
 
-// Componente auxiliar visual
 const InfoField = ({ label, value }) => (
   <View style={styles.fieldContainer}>
     <Text style={styles.fieldLabel}>{label}</Text>
