@@ -13,6 +13,7 @@ export default function BottomNavigationComponent() {
   ];
 
   const getIndexFromRoute = () => {
+    
     const index = routes.findIndex(r => r.key === route.name);
     return index === -1 ? 0 : index;
   };
@@ -20,13 +21,22 @@ export default function BottomNavigationComponent() {
   return (
     <BottomNavigation.Bar
       navigationState={{
-        index: getIndexFromRoute(), routes,
+        index: getIndexFromRoute(),
+        routes,
       }}
       onTabPress={({ route }) => {
         navigation.navigate(route.key);
       }}
       labeled
-      style={styles.bar}
+      activeColor="#FFFFFF" 
+      inactiveColor="#C8E6C9" 
+      style={styles.bar} 
+      
+      theme={{
+        colors: {
+          secondaryContainer: 'rgba(255, 255, 255, 0.2)', 
+        }
+      }}
     />
   );
 }
@@ -35,5 +45,6 @@ const styles = StyleSheet.create({
   bar: {
     width: '100%',
     elevation: 8,
+    backgroundColor: '#385F38', 
   },
 });
