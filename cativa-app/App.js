@@ -8,6 +8,7 @@ import ListPage from "./pages/ListPage";
 import ProfilePage from "./pages/ProfilePage";
 import ConfirmPage from "./pages/ConfirmPage";
 import SignUpPage from "./pages/SignUpPage";
+import EventPage from "./pages/EventPage"; 
 
 const Stack = createNativeStackNavigator();
 
@@ -23,6 +24,7 @@ export default function App() {
           <Stack.Screen name="List" component={ListPage} />
           <Stack.Screen name="Profile" component={ProfilePage} />
           <Stack.Screen name="Confirm" component={ConfirmPage} />
+          <Stack.Screen name="EventPage" component={EventPage} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

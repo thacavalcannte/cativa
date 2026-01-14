@@ -4,7 +4,7 @@ import EventCard from "../components/EventCard";
 import BottomNavigationComponent from "../components/BottomNavigationComponent";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const HomePage = () => {
+const HomePage = ({ navigation }) => {
     return (
         <SafeAreaView style={{flex:1}}>
             <View style={{flex:1}}>
@@ -31,6 +31,17 @@ const HomePage = () => {
                     <View style={styles.sectionHeader}>
                         <Text style={styles.sectionTitle}>Eventos →</Text>
                     </View>
+
+                    <TouchableOpacity 
+                        onPress={() => navigation.navigate('EventPage')}
+                        activeOpacity={0.9}
+                    >
+                        <EventCard
+                            title="Arte e Memória na Xilogravura"
+                            author="Mestre Stênio Diniz"
+                            image={require("../assets/evento1.jpg")}
+                        />
+                    </TouchableOpacity>
 
                     <EventCard
                         title="Arte e Memória na Xilogravura"
