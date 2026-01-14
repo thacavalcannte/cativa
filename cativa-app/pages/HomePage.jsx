@@ -72,11 +72,16 @@ const HomePage = ({ navigation }) => {
                         image={require("../assets/expo2.jpg")}
                     />
 
-                    <EventCard
-                        title='Exposição Permanente: "O Sert..."'
-                        author="Fábrica Theodoro"
-                        image={require("../assets/expo3.jpg")}
-                    />
+                    <TouchableOpacity 
+                        onPress={() => navigation.navigate('ExposicaoPage')}
+                        activeOpacity={0.9}
+                    >
+                        <EventCard
+                            title='Exposição Permanente: "O Sert..."'
+                            author="Fábrica Theodoro"
+                            image={require("../assets/expo3.jpg")}
+                        />
+                    </TouchableOpacity>
 
                     {/* Voluntário */}
                     <View style={styles.volunteerSection}>
