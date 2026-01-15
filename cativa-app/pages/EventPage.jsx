@@ -83,7 +83,10 @@ export default function EventPage({ navigation }) {
             </Text>
 
             {/* BOTÃO CONFIRMAR */}
-            <TouchableOpacity style={styles.confirmButton}>
+            <TouchableOpacity 
+                style={styles.confirmButton}
+                onPress={() => navigation.navigate('ValidateParticipationPage')}
+            > 
                 <Text style={styles.confirmButtonText}>Confirmar | +10 XP</Text>
             </TouchableOpacity>
 
