@@ -80,7 +80,7 @@ export default function LogInPage({navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#ffffffff", // Amarelo claro do fundo
+        backgroundColor: "#fff", 
         justifyContent: "center",
         paddingHorizontal: 40,
     },
@@ -97,28 +97,28 @@ const styles = StyleSheet.create({
         width: 35,
         height: 35,
         borderRadius: 22.5,
-        borderColor: '#5D8251',
+        borderColor: '#52804C',
         justifyContent: 'center',
         alignItems: 'center',
-        alignSelf: 'center', // centraliza na largura da tela
-        marginTop: -15, // aproxima mais do logo da cativa
+        alignSelf: 'center', 
+        marginTop: -15,
     },
     formContainer: {
         width: "100%",
         marginBottom: 20,
     },
     input: {
-        backgroundColor: "#ffffffff",
-        width: "100%", // não sei por que não ta pegando a largura toda......aaaaa
+        backgroundColor: "#fff",
+        width: "100%",
     },
     forgotPassword: {
         textAlign: "left",
         fontSize: 14,
-        color: "#333",
+        color: "#000000",
         marginTop: 5,
     },
     logInButton: {
-        backgroundColor: "#5D8251", 
+        backgroundColor: "#52804C", 
         borderRadius: 20,
             
     },
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     },
     signUpText: {
         fontSize: 16,
-        color: "#333",
+        color: "#000000",
     },
     signUpLink: {
         fontSize: 16,

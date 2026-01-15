@@ -45,15 +45,23 @@ export default function ContentsScreen() {
       <AppBar title={"Conteúdos"} backTo={""} showBack={false} />
 
       <View style={styles.tabs}>
-        <SegmentedButtons
-          value={value}
-          onValueChange={setValue}
-          buttons={[
-            { value: "eventos", label: "Eventos" },
-            { value: "exposicoes", label: "Exposições" },
-          ]}
+            <SegmentedButtons
+            value={value}
+            onValueChange={setValue}
+            style={{
+                backgroundColor: "transparent", 
+            }}
+            theme={{
+                colors: {
+                secondaryContainer: "rgb(224, 236, 223)",
+                },
+            }}
+            buttons={[
+                { value: "eventos", label: "Eventos", },
+                { value: "exposicoes", label: "Exposições" },
+            ]}
 
-        />
+            />
       </View>
 
       <FlatList
@@ -85,7 +93,7 @@ export default function ContentsScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#ffffff",
   },
   tabs: {
     paddingHorizontal: 16,
