@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, StyleSheet, FlatList } from "react-native";
 import { SegmentedButtons } from "react-native-paper";
 
@@ -7,19 +7,25 @@ import EventCardList from "../components/cardList/EventCardList";
 import ExpoCardList from "../components/cardList/ExpoCardList";
 import BottomNavigationComponent from "../components/layout/BottomNavigationComponent";
 import { getEvents } from '../api/eventService';
+import { getExpos } from "../api/expoService";
 
 export default function ContentsScreen() {
   const [value, setValue] = useState("eventos");
   const [events, setEvents] = useState([]); //SERVIDOR: lista vem da API
+  const [expos, setExpos] = useState([]);
 
   useEffect(() => {
-    // SERVIDOR: carregar eventos quando abrir a tela
     (async () => {
       try {
-        const data = await getEvents(); // chama a API
-        setEvents(data); // atualiza o estado
-      } catch (e) { 
-        console.log("Erro ao buscar eventos:", e); 
+        const [eventsData, exposData] = await Promise.all([
+          getEvents(),
+          getExpos(),
+        ]);
+
+        setEvents(Array.isArray(eventsData) ? eventsData : []); //transforma em array pq flatlist so funciona com array e o que é retornado da api não era
+        setExpos(Array.isArray(exposData) ? exposData : []);
+      } catch (e) {
+        console.log("Erro ao buscar conteúdos:", e);
       }
     })();
   }, []);
