@@ -1,10 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import { TextInput, Button } from "react-native-paper";
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../FirebaseConfig';
-import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function LogInPage({navigation}) {
     const [email, setEmail] = React.useState("");
@@ -14,25 +10,11 @@ export default function LogInPage({navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.logoContainer}>
-                {/* Imagem do logo! PRECISA TROCAR POR UMA DE MELHOR QUALIDADE ATÉ SVG SE FOR POSSÍVEL */}
                 <Image 
                     source={require("../assets/logoPngBaixaQualidade.png")}
                     style={styles.logoImage} 
                     resizeMode="center"/>
             </View>
-
-            <View style={styles.googleLogoContainer}>
-                <TouchableOpacity onPress={() => console.log('autenticar com google')} activeOpacity={0.7}> 
-                    {/* // ele faz ser clicável */}
-                    <Image
-                        source={{uri: 'https://i.pinimg.com/1200x/50/96/e7/5096e746d19b9c407089dfd220471bbe.jpg'}}
-                        style={{ width: 25, height: 25,}}
-                        // tamanho que está no protótipo, mas contando o tamanho inteiro junto com a borda
-                        
-                    />
-                </TouchableOpacity>
-            </View>
-
             <View style={styles.formContainer}>
                 <TextInput 
                     label="E-mail"
@@ -40,8 +22,8 @@ export default function LogInPage({navigation}) {
                     mode="outlined"
                     placeholder="Digite seu email"
                     onChangeText={email => setEmail(email)}
-                    activeOutlineColor="#5D8251"  //ajustar para as cores da idv
-                    outlineColor="#5D8251" //ajustar para as cores da idv
+                    activeOutlineColor="#283F25"  
+                    outlineColor="#52804C" 
                     style={styles.input} />
                 <TextInput 
                     label="Senha"
@@ -50,8 +32,8 @@ export default function LogInPage({navigation}) {
                     placeholder="Digite sua senha"
                     onChangeText={password => setPassword(password)}
                     secureTextEntry ={true}
-                    activeOutlineColor="#5D8251"  //ajustar para as cores da idv
-                    outlineColor="#5D8251" //ajustar para as cores da idv 
+                    activeOutlineColor="#283F25"  
+                    outlineColor="#52804C" 
                     style={styles.input} />
                 <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
             </View>
@@ -60,7 +42,7 @@ export default function LogInPage({navigation}) {
             <Button 
                     mode="contained" 
                     onPress={() => navigation.replace('Home')}
-                    buttonColor="#5D8251" // ajustar para as cores da idv
+                    buttonColor="#52804C"
                     style={styles.logInButton}>
                         Entrar
             </Button>
@@ -82,7 +64,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff", 
         justifyContent: "center",
-        paddingHorizontal: 40,
+        paddingHorizontal: 30,
     },
     logoContainer: {
         alignItems: "center",
@@ -91,17 +73,6 @@ const styles = StyleSheet.create({
     logoImage: {
         width: 200,
         height: 200,
-    },
-    googleLogoContainer: {
-        borderWidth: 1,
-        width: 35,
-        height: 35,
-        borderRadius: 22.5,
-        borderColor: '#52804C',
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center', 
-        marginTop: -15,
     },
     formContainer: {
         width: "100%",

@@ -32,13 +32,12 @@ export default function SuccessPage({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 20 },
-  backButton: { marginTop: 40, marginBottom: 20 },
+  container: { flex: 1, backgroundColor: '#fff', },
   content: { flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20 },
-  image: { width: 150, height: 100, marginBottom: 40, resizeMode: 'contain' }, 
-  title: { fontSize: 22, fontWeight: 'bold', textAlign: 'center', marginBottom: 15, color: '#000' },
-  description: { fontSize: 16, textAlign: 'center', color: '#555', marginBottom: 40, lineHeight: 24 },
+  image: { width: 300, height: 250, marginBottom: 40, resizeMode: 'contain' }, 
+  title: { fontSize: 22, fontWeight: 'bold', textAlign: 'left', marginBottom: 15, color: '#000000', paddingHorizontal:30 },
+  description: { fontSize: 16, textAlign: 'left', color: '#000000', marginBottom: 40, lineHeight: 24, paddingHorizontal: 30,},
   bold: { fontWeight: 'bold', textDecorationLine: 'underline' },
-  button: { backgroundColor: '#557C55', paddingVertical: 15, paddingHorizontal: 30, borderRadius: 10, width: '100%' },
+  button: { backgroundColor: '#52804C', paddingVertical: 15, borderRadius: 15, width: '100%' },
   buttonText: { color: '#fff', fontSize: 16, fontWeight: 'bold', textAlign: 'center' },
 });

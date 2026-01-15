@@ -11,17 +11,7 @@ export default function ProfilePage({ navigation }) {
 
   return (
     <View style={styles.container}>
-      
-      {/* Cabeçalho */}
-      {/* <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-            <MaterialIcons name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Perfil</Text>
-        <TouchableOpacity>
-            <MaterialIcons name="more-vert" size={24} color="#000" />
-        </TouchableOpacity>
-      </View> */}
+
       <AppBar title={'Perfil'} backTo={''} showBack={false}/>
       
 
@@ -82,21 +72,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    paddingTop: 50, 
-    paddingBottom: 10,
-  },
-  headerTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
   content: {
-    paddingHorizontal: 24,
+    paddingHorizontal: 30,
     paddingBottom: 20,
+
   },
   avatarContainer: {
     alignItems: 'center',
@@ -107,7 +86,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: '#557C55', 
+    backgroundColor: '#52804C', 
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -126,13 +105,13 @@ const styles = StyleSheet.create({
   },
   progressBarBackground: {
     height: 10,
-    backgroundColor: '#E0D4E0', 
+    backgroundColor: '#e0ecdf', 
     borderRadius: 5,
     overflow: 'hidden',
   },
   progressBarFill: {
     height: '100%',
-    backgroundColor: '#2E4F2F', 
+    backgroundColor: '#283F25', 
     borderRadius: 5,
   },
   xpRow: {
@@ -143,19 +122,19 @@ const styles = StyleSheet.create({
   xpText: {
     fontSize: 12,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#0000',
   },
   infoSection: {
     gap: 15,
   },
   fieldContainer: {
-    backgroundColor: '#FCF5FC', 
+    backgroundColor: '#e0ecdf', 
     padding: 15,
     borderRadius: 8,
   },
   fieldLabel: {
     fontSize: 12,
-    color: '#666',
+    color: '#52804C',
     marginBottom: 2,
   },
   fieldValue: {

@@ -33,8 +33,7 @@ export default function ValidateParticipationPage({ navigation }) {
       <View style={styles.uploadArea}>
         <View style={styles.placeholder}>
             <View style={styles.shapesContainer}>
-              <MaterialIcons name="filter" size={50} color="#D1C4E9" />
-              <MaterialIcons name="image" size={50} color="#D1C4E9" />
+              <MaterialIcons name="image" size={50} color="#52804c8d" />
             </View>
         </View>
       </View>
@@ -52,25 +51,24 @@ export default function ValidateParticipationPage({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#fff', padding: 20 },
-  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 30, marginBottom: 20 },
-  title: { fontSize: 20, fontWeight: 'bold' },
-  description: { fontSize: 14, color: '#333', marginBottom: 20 },
-  stepsContainer: { marginBottom: 30 },
-  stepText: { fontSize: 14, color: '#444', lineHeight: 22, marginBottom: 5 },
+  container: { flex: 1, backgroundColor: '#fff', paddingTop: 15, },
+  description: { fontSize: 16, color: '#000000', marginBottom: 20, paddingHorizontal: 35  },
+  stepsContainer: { marginBottom: 30, paddingHorizontal: 10,},
+  stepText: { fontSize: 14, color: '#000000', lineHeight: 22, marginBottom: 5, paddingHorizontal: 30 },
   
   uploadArea: { alignItems: 'center', marginBottom: 30 },
   placeholder: {
-    width: 250, height: 200, backgroundColor: '#F3E5F5', borderRadius: 20,
+    width: 250, height: 200, backgroundColor: '#e0ecdf', borderRadius: 20,
     justifyContent: 'center', alignItems: 'center'
   },
   shapesContainer: { flexDirection: 'row', gap: 10 },
   
   button: { 
-    backgroundColor: '#557C55', 
+    backgroundColor: '#52804C', 
     paddingVertical: 15, 
     borderRadius: 10, 
-    alignItems: 'center' 
+    alignItems: 'center',
+    margin: 30,
   },
   buttonText: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
 });

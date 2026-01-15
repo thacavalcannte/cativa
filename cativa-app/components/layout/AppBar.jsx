@@ -16,7 +16,7 @@ export default function AppBar({ title, backTo, showBack = (true)}) {
     showBack && (backTo || navigation.canGoBack());
 
   return (
-    <Appbar.Header elevated style={{backgroundColor:'transparent'}}>
+    <Appbar.Header elevated style={{backgroundColor:'transparent', paddingHorizontal: 20, paddingTop: 10}}>
       {shouldShowBack && (
         <Appbar.BackAction onPress={handleBack} />
       )}

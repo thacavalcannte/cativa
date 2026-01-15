@@ -34,7 +34,7 @@ export default function ContentsScreen() {
     },
     {
       id: "2",
-      title: "Ancestralidade, Resistência e Transmissão: A Saga do Mestre Stênio Diniz",
+      title: "Ancestralidade, Resistência e Transmissão: A Saga do...",
       artist: "Mestre Stênio Diniz",
       image: "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2025/11/IMG_9574-600x400.jpg",
     },
@@ -96,11 +96,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
   },
   tabs: {
-    paddingHorizontal: 16,
+    paddingHorizontal: 30,
     paddingTop: 8,
   },
   list: {
     padding: 16,
+    paddingHorizontal: 30,
     paddingBottom: 80,
   },
 });

@@ -28,13 +28,13 @@ export default function BottomNavigationComponent() {
         navigation.navigate(route.key);
       }}
       labeled
-      activeColor="#FFFFFF" 
+      activeColor="#fff" 
       inactiveColor="#C8E6C9" 
       style={styles.bar} 
       
       theme={{
         colors: {
-          secondaryContainer: 'rgba(255, 255, 255, 0.2)', 
+          secondaryContainer: '#e0ecdf52', 
         }
       }}
     />
