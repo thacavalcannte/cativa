@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons'; 
-import { signOut } from "firebase/auth";
-import { auth } from '../FirebaseConfig'; 
+import AppBar from "../components/layout/AppBar";
 
-import BottomNavigationComponent from "../components/BottomNavigationComponent";
+
+import BottomNavigationComponent from "../components/layout/BottomNavigationComponent";
 
 export default function ProfilePage({ navigation }) {
 
@@ -23,7 +23,7 @@ export default function ProfilePage({ navigation }) {
     <View style={styles.container}>
       
       {/* Cabeçalho */}
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
             <MaterialIcons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
@@ -31,7 +31,9 @@ export default function ProfilePage({ navigation }) {
         <TouchableOpacity>
             <MaterialIcons name="more-vert" size={24} color="#000" />
         </TouchableOpacity>
-      </View>
+      </View> */}
+      <AppBar title={'Perfil'} backTo={''} showBack={false}/>
+      
 
       <ScrollView contentContainerStyle={styles.content}>
         

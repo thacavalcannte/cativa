@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import EventCard from "../components/EventCard";
-import BottomNavigationComponent from "../components/BottomNavigationComponent";
+import BottomNavigationComponent from "../components/layout/BottomNavigationComponent";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const HomePage = ({ navigation }) => {

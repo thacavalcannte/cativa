@@ -1,19 +1,23 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import AppBar from "../components/layout/AppBar";
+
 
 export default function ValidateParticipationPage({ navigation }) {
   
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <MaterialIcons name="arrow-back" size={24} color="#000" />
         </TouchableOpacity>
         <Text style={styles.title}>Validar participação</Text>
         
         <MaterialIcons name="attach-file" size={24} color="#000" />
-      </View>
+      </View> */}
+      <AppBar title={'Validar Participação'} backTo={''} showBack={true}/>
+      
 
       <Text style={styles.description}>
         Para que sua participação seja validada, você precisará seguir os seguintes passos:

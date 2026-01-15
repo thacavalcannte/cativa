@@ -1,14 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import AppBar from "../components/layout/AppBar";
+
 
 export default function ExposicaoPage({ navigation }) {
   return (
     <View style={styles.container}>
       {/* Botão de Voltar */}
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+      {/* <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
         <MaterialIcons name="arrow-back" size={24} color="#000" />
-      </TouchableOpacity>
+      </TouchableOpacity> */}
+      <AppBar title={'Exposição'} backTo={''} showBack={true}/>
+      
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         

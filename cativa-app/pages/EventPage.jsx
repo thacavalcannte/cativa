@@ -1,14 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
+import AppBar from '../components/layout/AppBar'
 
 export default function EventPage({ navigation }) {
   return (
+    
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <MaterialIcons name="arrow-back" size={24} color="#000" />
-      </TouchableOpacity>
-
+      <AppBar title={'Evento'} backTo={''} showBack={true}/>
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.imageContainer}>
             <Image 
@@ -138,6 +137,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 8,
     borderRadius: 8,
+    marginBottom:25,
   },
   tagOficinaText: {
     fontWeight: 'bold',

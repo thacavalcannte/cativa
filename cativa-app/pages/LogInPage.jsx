@@ -4,6 +4,7 @@ import { TextInput, Button } from "react-native-paper";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../FirebaseConfig';
 import { useNavigation } from "@react-navigation/native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function LogInPage({navigation}) {
     const [email, setEmail] = React.useState("");

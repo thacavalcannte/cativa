@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import AppBar from "../components/layout/AppBar";
+
 
 export default function SuccessPage({ navigation }) {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
-        <MaterialIcons name="arrow-back" size={24} color="#000" />
-      </TouchableOpacity>
+      <AppBar title={''} backTo={''} showBack={true}/>
 
       <View style={styles.content}>
        <Image

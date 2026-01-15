@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, ScrollView, Image, Text} from "react-native";
 import { TextInput, Button, Appbar, Divider } from "react-native-paper";
-import AppBar from "../components/AppBar";
+import AppBar from "../components/layout/AppBar";
 
 // fiz uma versão levemente adaptada do protótipo, vejam se é interessante deixarmos a opção de se cadastrar como o google ou se eu devo tirar. queria adicionar o textinho no divider "ou" mas nao achei como fazer
 // https://reactnative.dev/docs/button   linha de separaçao entre os inputs
@@ -14,7 +14,7 @@ export default function SignUpPage({navigation}) {
 
     return (
         <View style={styles.container}>
-            <AppBar title={"Cadastro"}/>
+            <AppBar title={'Cadastro'} backTo={'Login'} showBack={true}/>
             <ScrollView contentContainerStyle={styles.scrollContent}>
                 <View style={styles.formContainer}>
                 <TextInput 
