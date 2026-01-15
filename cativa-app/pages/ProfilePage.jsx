@@ -33,7 +33,7 @@ export default function ProfilePage({ navigation }) {
             <View style={[styles.progressBarFill, { width: '60%' }]} /> 
           </View>
           <View style={styles.xpRow}>
-            <Text style={styles.xpText}>100 XP</Text>
+            <Text style={styles.xpText}>120 XP</Text>
             <Text style={styles.xpText}>200 XP</Text>
           </View>
         </View>

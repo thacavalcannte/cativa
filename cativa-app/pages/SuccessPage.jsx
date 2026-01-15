@@ -2,9 +2,10 @@ import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import AppBar from "../components/layout/AppBar";
+import ButtonComponent from "../components/ButtonComponent";
 
 
-export default function SuccessPage({ navigation }) {
+export default function SuccessPage() {
   return (
     <View style={styles.container}>
       <AppBar title={''} backTo={''} showBack={true}/>
@@ -17,15 +18,13 @@ export default function SuccessPage({ navigation }) {
 
         <Text style={styles.title}>Ihul! Sua solicitação foi enviada!</Text>
         <Text style={styles.description}>
-          O resultado da análise sai em breve. Você poderá conferir o status no <Text style={styles.bold}>seu email</Text> cadastrado na plataforma.
+          O resultado da análise sairá em breve. Você poderá conferir o status no <Text style={styles.bold}>seu email</Text> cadastrado na plataforma.
         </Text>
 
-        <TouchableOpacity 
-            style={styles.button} 
-            onPress={() => navigation.navigate('Home')} 
-        >
-          <Text style={styles.buttonText}>Voltar para a tela inicial</Text>
-        </TouchableOpacity>
+
+        <View style={{width:'100%', alignItems:'center'}}>
+            <ButtonComponent label={"Voltar para a tela inicial"} replaceTo={'Home'} />
+        </View>
       </View>
     </View>
   );
