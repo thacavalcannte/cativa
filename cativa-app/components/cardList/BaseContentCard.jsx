@@ -1,7 +1,10 @@
 import { Card, Text } from "react-native-paper";
 import { View, StyleSheet, Image } from "react-native";
+import { FlatList } from "react-native-gesture-handler";
 
 export default function BaseContentCard({ title, subtitle, image }) {
+  const source = image ? {uri: image} : fallback; 
+
   return (
     <Card style={styles.card} elevation={0}>
       <View style={styles.content}>
@@ -14,7 +17,7 @@ export default function BaseContentCard({ title, subtitle, image }) {
           </Text>
         </View>
 
-        <Image source={{ uri: image }} style={styles.image} />
+        <Image source={source} style={styles.image} />
       </View>
     </Card>
   );

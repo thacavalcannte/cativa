@@ -1,9 +1,37 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 import AppBar from '../components/layout/AppBar'
+import {getEventById} from '../api/eventService'
 
-export default function EventPage({ navigation }) {
+export default function EventPage({ navigation, route }) {
+  const {id} = route.params //pega o id dos parâmetros da rota
+  const [event, setEvent] = useState(null); // estado para armazenar os dados do evento
+
+  const heroSource = event?.image 
+    ? { uri: event.image } //usa a imagem da url
+    : require("../assets/evento1.jpg"); //senão, usa a imagem local como fallback
+
+  useEffect(() => {
+    // SERVIDOR: buscar evento pelo id
+    (async () => {
+      try {
+        const data = await getEventById(id); // chama a API
+        setEvent(data); // atualiza o estado
+      } catch (e) {
+        console.log("Erro ao buscar evento:", e);
+      }
+    })();
+  }, [id]); // executa quando o id mudar
+
+  if (!event) { // enquanto os dados não carregaram; exibe um loading
+    return ( 
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}> 
+        <Text>Carregando...</Text>
+      </View>
+    );
+  }
+
   return (
     
     <View style={styles.container}>
@@ -11,7 +39,7 @@ export default function EventPage({ navigation }) {
       <ScrollView contentContainerStyle={styles.scrollContent}>
         <View style={styles.imageContainer}>
             <Image 
-                source={require('../assets/evento1.jpg')} 
+                source={heroSource} 
                 style={styles.heroImage}
             />
             
@@ -29,15 +57,12 @@ export default function EventPage({ navigation }) {
         <View style={styles.content}>
             
             <Text style={styles.title}>
-                Arte e Memória na Xilogravura com o Mestre Stênio Diniz
+                {event.title}
             </Text>
 
             <Text style={styles.sectionTitle}>Descrição</Text>
             <Text style={styles.descriptionText}>
-                A oficina consistirá numa imersão no universo da arte de gravar na madeira, uma prática artística tão simbólica e potente da cultura nordestina. 
-                Inicia-se com uma contextualização histórica da xilogravura e segue com demonstrações práticas que explicam, passo a passo, as técnicas essenciais 
-                da produção sempre em ritmo acessível e com espaço para dúvidas. Em seguida, haverá prática mediada, quando cada participante poderá experimentar os materiais e consolidar 
-                o que foi aprendido em pequenas projetos. 
+                {event.description} 
             </Text>
 
             {/*  DATAS E HORÁRIOS */}

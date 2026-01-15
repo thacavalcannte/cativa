@@ -6,39 +6,23 @@ import AppBar from "../components/layout/AppBar";
 import EventCardList from "../components/cardList/EventCardList";
 import ExpoCardList from "../components/cardList/ExpoCardList";
 import BottomNavigationComponent from "../components/layout/BottomNavigationComponent";
+import { getEvents } from '../api/eventService';
 
 export default function ContentsScreen() {
   const [value, setValue] = useState("eventos");
+  const [events, setEvents] = useState([]); //SERVIDOR: lista vem da API
 
-  const events = [
-    {
-      id: "1",
-      title: "Ceará Jogos: Roadshow",
-      author: "Asa Branca",
-      image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMdVcmrXEXIb-d8USdMztyTOFmNhTCYZBpGA&s",
-    },
-    {
-      id: "2",
-      title: "Arte e Memória na Xilogravura",
-      author: "Mestre Stênio Diniz",
-      image: "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2025/10/16112023Sessao-de-fotos-com-Mestre-Stenio-DinizSamuel-Macedo_K5A2766-600x400.jpg",
-    },
-  ];
-
-  const expos = [
-    {
-      id: "1",
-      title: "Exposição permanente: O Sertão Múltiplo de Cego Aderaldo",
-      artist: "Alênio Alencar e Lorena Patricio",
-      image: "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2023/06/Fotos-Pedro-Matheus-Quadros-estarao-no-lancamento-da-Exposicao-2-600x450.jpg",
-    },
-    {
-      id: "2",
-      title: "Ancestralidade, Resistência e Transmissão: A Saga do...",
-      artist: "Mestre Stênio Diniz",
-      image: "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2025/11/IMG_9574-600x400.jpg",
-    },
-  ];
+  useEffect(() => {
+    // SERVIDOR: carregar eventos quando abrir a tela
+    (async () => {
+      try {
+        const data = await getEvents(); // chama a API
+        setEvents(data); // atualiza o estado
+      } catch (e) { 
+        console.log("Erro ao buscar eventos:", e); 
+      }
+    })();
+  }, []);
 
   return (
     <View style={styles.container}>

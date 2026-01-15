@@ -2,9 +2,11 @@ import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
 const EventCard = ({ title, author, image }) => {
+    const imageSource = typeof image === 'string' ? {uri: image} : image;
+ 
     return (
         <View style={styles.card}>
-            <Image source={image} style={styles.cardImage} />
+            <Image source={imageSource} style={styles.cardImage} />
 
             <View style={styles.cardContent}>
                 <Text style={styles.cardTitle}>{title}</Text>

@@ -1,25 +1,65 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import AppBar from "../components/layout/AppBar";
+import { getExpoById } from "../api/expoService"; // SERVIDOR
 
+export default function ExposicaoPage({ navigation, route }) {
+  const id = route?.params?.id;
 
-export default function ExposicaoPage({ navigation }) {
+  const [expo, setExpo] = useState(null);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (id == null) {
+      setError("ID da exposição não foi enviado na navegação.");
+      return;
+    }
+
+    (async () => {
+      try {
+        setError(null);
+        const data = await getExpoById(id); // SERVIDOR
+        setExpo(data);
+      } catch (e) {
+        console.log("Erro ao buscar exposição:", e);
+        setError("Não consegui carregar a exposição (API/IP/db).");
+      }
+    })();
+  }, [id]);
+
+  if (error) {
+    return (
+      <View style={styles.container}>
+        <AppBar title={"Exposição"} backTo={""} showBack={true} />
+        <View style={{ padding: 20 }}>
+          <Text style={{ color: "red", fontSize: 16 }}>{error}</Text>
+        </View>
+      </View>
+    );
+  }
+
+  if (!expo) {
+    return (
+      <View style={[styles.container, { justifyContent: "center", alignItems: "center" }]}>
+        <Text>Carregando...</Text>
+      </View>
+    );
+  }
+
+  // Fallback de imagem (se vier null)
+  const heroSource = expo.image ? { uri: expo.image } : require("../assets/expo3.jpg");
+
   return (
     <View style={styles.container}>
-      {/* Botão de Voltar */}
-      {/* <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <MaterialIcons name="arrow-back" size={24} color="#000" />
-      </TouchableOpacity> */}
       <AppBar title={'Exposição'} backTo={''} showBack={true}/>
-      
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         
         {/* IMAGEM DE CAPA */}
         <View style={styles.imageContainer}>
             <Image 
-                source={require('../assets/expo3.jpg')} 
+                source={heroSource} 
                 style={styles.heroImage} 
             />
             
@@ -34,12 +74,12 @@ export default function ExposicaoPage({ navigation }) {
         <View style={styles.content}>
             
             <Text style={styles.title}>
-                Exposição Permanente: “O Sertão Múltiplo de Cego Aderaldo” por Alênio Alencar e Lorena Patricio
+                {expo.title}
             </Text>
 
             <Text style={styles.sectionTitle}>Descrição</Text>
             <Text style={styles.descriptionText}>
-                Mapear histórias, xilografar memórias. A vida do poeta Cego Aderaldo é aqui revisitada em sua multiplicidade: poeta, cantador e violeiro; pai e filho; exibidor de filmes e comerciante. Sua trajetória mostra como arte e cultura se tornaram resistência frente às adversidades. Uma celebração de sua força criadora e da vitalidade do sertão.
+                {expo.description}
             </Text>
 
             {/* DATAS E HORÁRIOS */}

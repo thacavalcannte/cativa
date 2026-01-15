@@ -3,8 +3,28 @@ import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from "react-nati
 import EventCard from "../components/EventCard";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BottomNavigationComponent from "../components/layout/BottomNavigationComponent";
+import { useEffect, useState } from "react";
+import { getEvents } from "../api/eventService";
+import { getExpos } from "../api/expoService";
 
 const HomePage = ({ navigation }) => {
+    const [events, setEvents] = useState([]);
+    const [expos, setExpos] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            try {
+            const eventsData = await getEvents();
+            setEvents(eventsData);
+
+            const exposData = await getExpos();
+            setExpos(exposData);
+            } catch (e) {
+            console.log("Erro:", e);
+            }
+        })();
+    }, []);
+
     return (
         <SafeAreaView style={{flex:1}}>
             <View style={{flex:1}}>
@@ -30,56 +50,42 @@ const HomePage = ({ navigation }) => {
                         <Text style={styles.sectionTitle}>Eventos →</Text>
                     </View>
 
-                    <TouchableOpacity 
-                        onPress={() => navigation.navigate('EventPage')}
-                        activeOpacity={0.9}
-                    >
-                        <EventCard
-                            title="Arte e Memória na Xilogravura"
-                            author="Mestre Stênio Diniz"
-                            image={require("../assets/evento1.jpg")}
-                        />
-                    </TouchableOpacity>
-
-                    <EventCard
-                        title="Arte e Memória na Xilogravura"
-                        author="Mestre Stênio Diniz"
-                        image={require("../assets/evento1.jpg")}
-                    />
-
-                    <EventCard
-                        title="Ceará Jogos: Roadshow"
-                        author="Asa Branca"
-                        image={require("../assets/evento2.jpg")}
-                    />
+                    {events.map((event) => (
+                        <TouchableOpacity
+                            key={event.id}
+                            onPress={() => {
+                            // console.log("clicou no evento:", event);
+                                navigation.navigate('EventPage', { id: event.id });
+                            }}
+                            activeOpacity={0.9} >
+                            <EventCard
+                                title={event.title}
+                                author={event.author}
+                                image={event.image}
+                            />
+                        </TouchableOpacity>
+                    ))}
 
                     {/* Exposições */}
                     <View style={styles.sectionHeader}>
                         <Text style={styles.sectionTitle}>Exposições →</Text>
                     </View>
 
-                    <EventCard
-                        title="Eu no Sertão Monumental"
-                        author="César Moura"
-                        image={require("../assets/expo1.jpg")}
-                    />
-
-                    <EventCard
-                        title="Retratos do voo"
-                        author="Paulo Aléf"
-                        image={require("../assets/expo2.jpg")}
-                    />
-
-                    <TouchableOpacity 
-                        onPress={() => navigation.navigate('ExposicaoPage')}
-                        activeOpacity={0.9}
-                    >
-                        <EventCard
-                            title='Exposição Permanente: "O Sert..."'
-                            author="Fábrica Theodoro"
-                            image={require("../assets/expo3.jpg")}
-                        />
-                    </TouchableOpacity>
+                    {expos.map((expo) => (
+                        <TouchableOpacity
+                            key={expo.id}
+                            onPress={() => {
+                            // console.log("clicou no evento:", event);
+                                navigation.navigate('ExposicaoPage', { id: expo.id });
+                            }}
+                            activeOpacity={0.9} >
+                            <EventCard
+                                title={expo.title}
+                                author={expo.artist}
+                                image={expo.image}
+                            />
+                        </TouchableOpacity>
+                    ))}
 
                     {/* Voluntário */}
                     <View style={styles.volunteerSection}>

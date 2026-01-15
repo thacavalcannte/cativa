@@ -1,0 +1,42 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "title": "Arte e Memória na Xilogravura",
+      "description": "A oficina propõe uma imersão no universo da xilogravura, prática artística profundamente ligada à cultura nordestina. O encontro começa com uma contextualização histórica e estética da gravura em madeira, seguida de demonstrações práticas sobre ferramentas, materiais e técnicas essenciais do processo. Em seguida, os participantes passam para uma etapa de experimentação guiada, com apoio do ministrante para tirar dúvidas e desenvolver pequenas composições, consolidando o aprendizado de forma acessível e criativa.",
+      "author": "Mestre Stênio Diniz",
+      "image": "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2025/10/16112023Sessao-de-fotos-com-Mestre-Stenio-DinizSamuel-Macedo_K5A2766-600x400.jpg"
+    },
+    {
+      "id": "2",
+      "title": "Ceará Jogos: Roadshow",
+      "description": "Um evento voltado para a comunidade de games, tecnologia e criação digital, reunindo atividades interativas e momentos de troca entre participantes. A programação inclui dinâmicas, bate-papo sobre tendências do mercado de jogos, experiências com projetos independentes e um espaço aberto para networking. É uma oportunidade para conhecer novas iniciativas, compartilhar referências, encontrar pessoas com interesses parecidos e fortalecer a cena criativa local em um ambiente descontraído e colaborativo.",
+      "author": "Asa Branca",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMdVcmrXEXIb-d8USdMztyTOFmNhTCYZBpGA&s"
+    }
+  ],
+
+  "expos": [
+    {
+      "id": "e1",
+      "title": "Eu no Sertão Monumental",
+      "artist": "César Moura",
+      "description": "A exposição Eu no Sertão Monumental apresenta uma série de esculturas de grande porte que dialogam com a vida, os símbolos e as narrativas do sertão nordestino. Por meio de formas expressivas e materiais robustos, o artista César Moura constrói uma leitura poética sobre resistência, identidade e memória coletiva. As obras convidam o público a refletir sobre a força do homem sertanejo e sua relação profunda com a terra, revelando histórias que atravessam gerações e permanecem vivas no imaginário cultural brasileiro.",
+      "image": "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2023/06/Fotos-Pedro-Matheus-Quadros-estarao-no-lancamento-da-Exposicao-2-600x450.jpg"
+    },
+    {
+      "id": "e2",
+      "title": "Retratos do Voo",
+      "artist": "Paulo Aléf",
+      "description": "Retratos do Voo reúne uma série de fotografias que exploram a ideia de liberdade, deslocamento e transformação. O fotógrafo Paulo Aléf registra pessoas, paisagens e instantes que evocam movimento e travessia, criando uma narrativa visual sobre o desejo humano de ir além dos próprios limites. As imagens capturam tanto o físico quanto o simbólico do voo, convidando o espectador a refletir sobre caminhos, sonhos e as múltiplas formas de partir e retornar.",
+      "image": "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2025/11/IMG_9574-600x400.jpg"
+    },
+    {
+        "id": "e3",
+        "title": "Cores da Terra",
+        "artist": "Ana Clara Silva",
+        "description": "A exposição Cores da Terra reúne uma série de pinturas que investigam a relação sensível entre o ser humano e o ambiente natural. Por meio de texturas, cores terrosas e paisagens estilizadas, a artista Ana Clara Silva propõe uma reflexão sobre pertencimento, memória e identidade, revelando como a natureza molda não apenas os territórios, mas também as histórias e emoções das pessoas que os habitam.",
+        "image": "https://diariodonordeste.verdesmares.com.br/image/contentid/policy:1.3365255:1683241677/Jardim%209_Easy-Resize.com%20(1).jpg?f=16x9&h=574&w=1020&$p$f$h$w=437ebf1"
+    }
+  ]
+}
