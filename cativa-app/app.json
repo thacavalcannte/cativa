@@ -30,6 +30,14 @@
         "projectId": "b02ffd5a-4319-43df-b1bc-6027d3ebbc3a"
       }
     },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ],
     "owner": "cativa-app"
   }
 }

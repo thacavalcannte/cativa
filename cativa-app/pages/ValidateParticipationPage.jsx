@@ -1,11 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet, } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import AppBar from "../components/layout/AppBar";
 import ButtonComponent from "../components/ButtonComponent";
-
+import { usePickImage } from '../components/utils/pickImage'; 
+import { useState } from 'react';
 
 export default function ValidateParticipationPage() {
+  
+  const [imageUri, setImageUri] = useState(null);
+
+   const { pickImage } = usePickImage()
+
+  const handlePickImage = async () => {
+  try {
+    const uri = await pickImage();
+    if (!uri) return;
+
+    setImageUri(uri); // 👈 salva a imagem no estado
+  } catch (error) {
+    console.log("handlePickImage: ", error);
+  }
+};
+
   
   return (
     <View style={styles.container}>
@@ -22,8 +39,8 @@ export default function ValidateParticipationPage() {
         <Text style={styles.stepText}>3. Tirar uma foto com o artista, enquanto segura sua produção;</Text>
         <Text style={styles.stepText}>4. Por fim, envie no espaço abaixo a foto registrada e aguarde o resultado da análise.</Text>
       </View>
-
-      <View style={styles.uploadArea}>
+{/* 
+      <View style={styles.uploadArea} onPress={handlePickImage}>
         <View style={styles.placeholder}>
             <View style={styles.shapesContainer}>
               <MaterialIcons name="image" size={50} color="#52804c8d" />
@@ -35,6 +52,32 @@ export default function ValidateParticipationPage() {
           <ButtonComponent label={"Enviar"} replaceTo={'SuccessPage'} />
       </View>
 
+    </View>
+  );
+}
+ */}
+       
+    <TouchableOpacity style={styles.uploadArea} onPress={handlePickImage}>
+  <View style={styles.placeholder}>
+    {imageUri ? (
+      <Image 
+        source={{ uri: imageUri }} 
+        style={styles.imagePreview}
+      />
+    ) : (
+      <View style={styles.shapesContainer}>
+        <MaterialIcons name="image" size={50} color="#52804c8d" />
+      </View>
+    )}
+  </View>
+</TouchableOpacity>
+
+
+  <TouchableOpacity>
+      <View style={{width:'100%', alignItems:'center'}}>
+          <ButtonComponent label={"Enviar"} replaceTo={'SuccessPage'} />
+      </View>
+</TouchableOpacity>
     </View>
   );
 }
@@ -51,7 +94,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center', alignItems: 'center'
   },
   shapesContainer: { flexDirection: 'row', gap: 10 },
-  
+
+  imagePreview: {
+  width: 250,
+  height: 200,
+  borderRadius: 20,
+},  
   button: { 
     backgroundColor: '#52804C', 
     paddingVertical: 15, 

@@ -7,50 +7,117 @@ import ButtonComponent from "../components/ButtonComponent";
 
 
 export default function ExposicaoPage({ navigation, route }) {
-  const id = route?.params?.id;
+  const {id, initialData } = route.params || {};
 
-  const [expo, setExpo] = useState(null);
+  const [expo, setExpo] = useState(initialData || null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    if (id == null) {
-      setError("ID da exposição não foi enviado na navegação.");
-      return;
+   const abrirMapa = () => {
+      const endereco = "R. Pascoal Crispino, 167, Centro, Quixadá - CE";
+      // Criamos a URL específica para mapas (funciona em Android e iOS)
+      const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(endereco)}`;
+      
+      Linking.openURL(url).catch(err => console.error("Erro ao abrir o mapa", err));
+  };
+
+//   useEffect(() => {
+//   if (id == null) return;
+//   (async () => {
+//     try {
+//       const data = await getExpoById(id);
+//       if (data) {
+//         setExpo(data);
+//       } else {
+//         throw new Error("Não encontrado");
+//       }
+//     } catch (e) {
+//       console.log("Usando dados locais de fallback...");
+//       const mockExpos = {
+//         "1": {
+//           title: "Exposição permanente: O Sertão Múltiplo de Cego Aderaldo",
+//           description: "Uma imersão na vida e obra do mestre da cultura popular Cego Aderaldo.",
+//           image: "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2023/06/Fotos-Pedro-Matheus-Quadros-estarao-no-lancamento-da-Exposicao-2-600x450.jpg"
+//         },
+//         "2": {
+//           title: "Ancestralidade, Resistência e Transmissão",
+//           description: "A saga do povo cearense contada através da arte e tradição.",
+//           image: "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2025/11/IMG_9574-600x400.jpg"
+//         }
+//       };
+//       setExpo(mockExpos[id] || mockExpos["1"]);
+//     }
+//   })();
+// }, [id]);
+
+//   if (error) {
+//     return (
+//       <View style={styles.container}>
+//         <AppBar title={"Exposição"} backTo={""} showBack={true} />
+//         <View style={{ padding: 20 }}>
+//           <Text style={{ color: "red", fontSize: 16 }}>{error}</Text>
+//         </View>
+//       </View>
+//     );
+//   }
+
+//   if (!expo) {
+//     return (
+//       <View style={[styles.container, { justifyContent: "center", alignItems: "center" }]}>
+//         <Text>Carregando...</Text>
+//       </View>
+//     );
+//   }
+
+//   // Fallback de imagem (se vier null)
+//   const heroSource = expo.image ? { uri: expo.image } : require("../assets/expo3.jpg");
+useEffect(() => {
+        if (!id) {
+            setError("ID da exposição não encontrado.");
+            return;
+        }
+
+        (async () => {
+            try {
+                // Tenta buscar dados completos (como a descrição longa) no servidor
+                const data = await getExpoById(id);
+                if (data) {
+                    setExpo(data);
+                }
+            } catch (e) {
+                console.log("Erro ao buscar no servidor, mantendo dados iniciais:", e);
+                // Se não houver initialData e a API falhar, usamos um mock rápido para não travar
+                if (!expo) {
+                   setExpo({
+                       title: "Carregando título...",
+                       description: "Não foi possível carregar a descrição no momento.",
+                       image: null
+                   });
+                }
+            }
+        })();
+    }, [id]);
+
+    if (error) {
+        return (
+            <View style={styles.container}>
+                <AppBar title={"Exposição"} showBack={true} />
+                <View style={{ padding: 20 }}>
+                    <Text style={{ color: "red" }}>{error}</Text>
+                </View>
+            </View>
+        );
     }
 
-    (async () => {
-      try {
-        setError(null);
-        const data = await getExpoById(id); // SERVIDOR
-        setExpo(data);
-      } catch (e) {
-        console.log("Erro ao buscar exposição:", e);
-        setError("Não consegui carregar a exposição (API/IP/db).");
-      }
-    })();
-  }, [id]);
+    // Só mostra carregando se realmente não houver dado nenhum (nem initialData nem API)
+    if (!expo) {
+        return (
+            <View style={[styles.container, { justifyContent: "center", alignItems: "center" }]}>
+                <Text>Carregando...</Text>
+            </View>
+        );
+    }
 
-  if (error) {
-    return (
-      <View style={styles.container}>
-        <AppBar title={"Exposição"} backTo={""} showBack={true} />
-        <View style={{ padding: 20 }}>
-          <Text style={{ color: "red", fontSize: 16 }}>{error}</Text>
-        </View>
-      </View>
-    );
-  }
-
-  if (!expo) {
-    return (
-      <View style={[styles.container, { justifyContent: "center", alignItems: "center" }]}>
-        <Text>Carregando...</Text>
-      </View>
-    );
-  }
-
-  // Fallback de imagem (se vier null)
-  const heroSource = expo.image ? { uri: expo.image } : require("../assets/expo3.jpg");
+    const heroSource = expo.image ? { uri: expo.image } : require("../assets/expo3.jpg");
 
   return (
     <View style={styles.container}>
@@ -104,7 +171,7 @@ export default function ExposicaoPage({ navigation, route }) {
                         Local: Rua Pascoal Crispino, 167 Varanda da Casa de Saberes Cego Aderaldo.
                     </Text>
                 </View>
-                <TouchableOpacity style={styles.mapButton}>
+                <TouchableOpacity style={styles.mapButton} onPress={abrirMapa}>
                     <MaterialIcons name="map" size={16} color="black" style={{marginRight:5}}/>
                     <Text style={styles.mapButtonText}>VER LOCAL</Text>
                 </TouchableOpacity>

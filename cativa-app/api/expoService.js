@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.100.183:3001";
+const BASE_URL = "http://192.168.18.9:3001";
 
 export async function getExpos() {
   const res = await fetch(`${BASE_URL}/expos`);

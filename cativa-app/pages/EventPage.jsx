@@ -1,28 +1,53 @@
 import React, {useState, useEffect} from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { MaterialIcons, FontAwesome5 } from '@expo/vector-icons';
 import AppBar from '../components/layout/AppBar'
 import {getEventById} from '../api/eventService'
 
 export default function EventPage({ navigation, route }) {
-  const {id} = route.params //pega o id dos parâmetros da rota
-  const [event, setEvent] = useState(null); // estado para armazenar os dados do evento
+  const {id, initialData } = route.params //pega o id dos parâmetros da rota
+  const [event, setEvent] = useState(initialData || null); // estado para armazenar os dados do evento
 
   const heroSource = event?.image 
     ? { uri: event.image } //usa a imagem da url
     : require("../assets/evento1.jpg"); //senão, usa a imagem local como fallback
 
+    const abrirMapa = () => {
+    const endereco = "R. Pascoal Crispino, 167, Centro, Quixadá - CE";
+    // Criamos a URL específica para mapas (funciona em Android e iOS)
+    const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(endereco)}`;
+    
+    Linking.openURL(url).catch(err => console.error("Erro ao abrir o mapa", err));
+};
+
   useEffect(() => {
-    // SERVIDOR: buscar evento pelo id
-    (async () => {
-      try {
-        const data = await getEventById(id); // chama a API
-        setEvent(data); // atualiza o estado
-      } catch (e) {
-        console.log("Erro ao buscar evento:", e);
+  (async () => {
+    try {
+      const data = await getEventById(id);
+      if (data) {
+        setEvent(data);
+      } else {
+        throw new Error("Não encontrado");
       }
-    })();
-  }, [id]); // executa quando o id mudar
+    } catch (e) {
+      console.log("Usando dados locais de fallback...");
+      // DADOS PARA EXIBIÇÃO IMEDIATA
+      const mockEvents = {
+        "1": {
+          title: "Ceará Jogos: Roadshow",
+          description: "O Roadshow Ceará Jogos é um evento itinerante que celebra a cultura gamer e o desenvolvimento de jogos no estado.",
+          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMdVcmrXEXIb-d8USdMztyTOFmNhTCYZBpGA&s"
+        },
+        "2": {
+          title: "Arte e Memória na Xilogravura",
+          description: "Oficina prática com o Mestre Stênio Diniz explorando as técnicas ancestrais da xilogravura cearense.",
+          image: "https://www.secult.ce.gov.br/wp-content/uploads/sites/43/2025/10/16112023Sessao-de-fotos-com-Mestre-Stenio-DinizSamuel-Macedo_K5A2766-600x400.jpg"
+        }
+      };
+      setEvent(mockEvents[id] || mockEvents["1"]);
+    }
+  })();
+}, [id]);
 
   if (!event) { // enquanto os dados não carregaram; exibe um loading
     return ( 
@@ -96,7 +121,7 @@ export default function EventPage({ navigation, route }) {
                         Local: Rua Pascoal Crispino, 167 Varanda da Casa de Saberes Cego Aderaldo.
                     </Text>
                 </View>
-                <TouchableOpacity style={styles.mapButton}>
+                <TouchableOpacity style={styles.mapButton} onPress={abrirMapa}>
                     <MaterialIcons name="map" size={16} color="black" style={{marginRight:5}}/>
                     <Text style={styles.mapButtonText}>VER LOCAL</Text>
                 </TouchableOpacity>

@@ -1,4 +1,4 @@
-const BASE_URL = "http://192.168.100.183:3001"; 
+const BASE_URL = "http://192.168.18.9:3001"; 
 // ↑ SERVIDOR (json-server): use o IP do PC, NÃO localhost
 
 export async function getEvents() {
