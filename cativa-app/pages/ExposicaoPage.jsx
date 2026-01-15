@@ -108,7 +108,6 @@ useEffect(() => {
         );
     }
 
-    // Só mostra carregando se realmente não houver dado nenhum (nem initialData nem API)
     if (!expo) {
         return (
             <View style={[styles.container, { justifyContent: "center", alignItems: "center" }]}>

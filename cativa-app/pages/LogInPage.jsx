@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     },
     signUpContainer: {
         marginTop: 40,
-        alignItems: "flex-start", //alinha da esquerda pra direita
+        alignItems: "flex-start", 
     },
     signUpText: {
         fontSize: 16,

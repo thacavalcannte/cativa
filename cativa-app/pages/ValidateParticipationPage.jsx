@@ -17,7 +17,7 @@ export default function ValidateParticipationPage() {
     const uri = await pickImage();
     if (!uri) return;
 
-    setImageUri(uri); // 👈 salva a imagem no estado
+    setImageUri(uri); 
   } catch (error) {
     console.log("handlePickImage: ", error);
   }
@@ -39,23 +39,6 @@ export default function ValidateParticipationPage() {
         <Text style={styles.stepText}>3. Tirar uma foto com o artista, enquanto segura sua produção;</Text>
         <Text style={styles.stepText}>4. Por fim, envie no espaço abaixo a foto registrada e aguarde o resultado da análise.</Text>
       </View>
-{/* 
-      <View style={styles.uploadArea} onPress={handlePickImage}>
-        <View style={styles.placeholder}>
-            <View style={styles.shapesContainer}>
-              <MaterialIcons name="image" size={50} color="#52804c8d" />
-            </View>
-        </View>
-      </View>
-
-      <View style={{width:'100%', alignItems:'center'}}>
-          <ButtonComponent label={"Enviar"} replaceTo={'SuccessPage'} />
-      </View>
-
-    </View>
-  );
-}
- */}
        
     <TouchableOpacity style={styles.uploadArea} onPress={handlePickImage}>
   <View style={styles.placeholder}>

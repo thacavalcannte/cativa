@@ -14,7 +14,6 @@ export default function EventPage({ navigation, route }) {
 
     const abrirMapa = () => {
     const endereco = "R. Pascoal Crispino, 167, Centro, Quixadá - CE";
-    // Criamos a URL específica para mapas (funciona em Android e iOS)
     const url = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(endereco)}`;
     
     Linking.openURL(url).catch(err => console.error("Erro ao abrir o mapa", err));
