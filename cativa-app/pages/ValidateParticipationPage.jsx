@@ -1,21 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import AppBar from "../components/layout/AppBar";
+import ButtonComponent from "../components/ButtonComponent";
 
 
-export default function ValidateParticipationPage({ navigation }) {
+export default function ValidateParticipationPage() {
   
   return (
     <View style={styles.container}>
-      {/* <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <MaterialIcons name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.title}>Validar participação</Text>
-        
-        <MaterialIcons name="attach-file" size={24} color="#000" />
-      </View> */}
       <AppBar title={'Validar Participação'} backTo={''} showBack={true}/>
       
 
@@ -38,13 +31,9 @@ export default function ValidateParticipationPage({ navigation }) {
         </View>
       </View>
 
-      {/* BOTÃO ENVIAR */}
-      <TouchableOpacity 
-        style={styles.button} 
-        onPress={() => navigation.navigate('SuccessPage')}
-      >
-        <Text style={styles.buttonText}>Enviar</Text>
-      </TouchableOpacity>
+      <View style={{width:'100%', alignItems:'center'}}>
+          <ButtonComponent label={"Enviar"} replaceTo={'SuccessPage'} />
+      </View>
 
     </View>
   );

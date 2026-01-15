@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'rea
 import { MaterialIcons } from '@expo/vector-icons';
 import AppBar from "../components/layout/AppBar";
 import { getExpoById } from "../api/expoService"; // SERVIDOR
+import ButtonComponent from "../components/ButtonComponent";
+
 
 export default function ExposicaoPage({ navigation, route }) {
   const id = route?.params?.id;
@@ -111,14 +113,10 @@ export default function ExposicaoPage({ navigation, route }) {
             <Text style={styles.footerNote}>
                 Para mais informações, acesse o perfil do Instagram da <Text style={{textDecorationLine: 'underline'}}>Casa de Saberes Cego Aderaldo</Text>
             </Text>
-
-            {/* BOTÃO CONFIRMAR */}
-            <TouchableOpacity 
-                style={styles.confirmButton}
-                onPress={() => navigation.navigate('ValidateParticipationPage')}
-            >
-                <Text style={styles.confirmButtonText}>Confirmar | +20 XP</Text>
-            </TouchableOpacity>
+            
+            <View style={{width:'100%', alignItems:'center'}}>
+                <ButtonComponent label={"Confirmar | +20 XP"} replaceTo={'ValidateParticipationPage'} />
+            </View>
 
         </View>
       </ScrollView>

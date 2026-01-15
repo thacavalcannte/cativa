@@ -1,7 +1,9 @@
 import React from "react";
-import { StyleSheet, View, ScrollView, Image, Text} from "react-native";
-import { TextInput, Button, Appbar, Divider } from "react-native-paper";
+import { StyleSheet, View, ScrollView,} from "react-native";
+import { TextInput, } from "react-native-paper";
 import AppBar from "../components/layout/AppBar";
+import ButtonComponent from "../components/ButtonComponent";
+
 
 export default function SignUpPage({navigation}) {
     const [name, setName] = React.useState("");
@@ -54,14 +56,9 @@ export default function SignUpPage({navigation}) {
                     style={styles.input} />
             </View>
 
-            {/* Botão de entrar */}
-            <Button 
-                    mode="contained" 
-                    onPress={() => navigation.replace('Home')}
-                    buttonColor="#52804C" 
-                    style={styles.signUpButton}>
-                        Cadastrar
-            </Button>
+            <View style={{width:'100%', alignItems:'center'}}>
+                <ButtonComponent label={"Cadastrar"} replaceTo={'Home'}/>
+            </View>
 
             </ScrollView>
             
@@ -82,6 +79,7 @@ const styles = StyleSheet.create({
     formContainer: {
         marginTop: 20,
         marginBottom: 20,
+        gap:20,
     },
     input: {
         backgroundColor: "#ffffff",

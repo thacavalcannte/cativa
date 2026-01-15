@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
-import { TextInput, Button } from "react-native-paper";
+import { TextInput } from "react-native-paper";
+import ButtonComponent from "../components/ButtonComponent";
 
 export default function LogInPage({navigation}) {
     const [email, setEmail] = React.useState("");
@@ -38,16 +39,10 @@ export default function LogInPage({navigation}) {
                 <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
             </View>
 
-            {/* Botão de entrar */}
-            <Button 
-                    mode="contained" 
-                    onPress={() => navigation.replace('Home')}
-                    buttonColor="#52804C"
-                    style={styles.logInButton}>
-                        Entrar
-            </Button>
+            <View style={{width:'100%', alignItems:'center'}}>
+                <ButtonComponent label={"Entrar"} replaceTo={'Home'} />
+            </View>
 
-            {/* Texto de se não tiver conta cadastre-se */}
             <View style={styles.signUpContainer}>
                 <Text style={styles.signUpText}>Ainda não tem conta?</Text>
                 <TouchableOpacity onPress={() => navigation.replace('SignUp')} activeOpacity={0.7}>
