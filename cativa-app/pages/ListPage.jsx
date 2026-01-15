@@ -42,7 +42,7 @@ export default function ContentsScreen() {
 
   return (
     <View style={styles.container}>
-      <AppBar title={""} backTo={""} showBack={true} />
+      <AppBar title={"Conteúdos"} backTo={""} showBack={false} />
 
       <View style={styles.tabs}>
         <SegmentedButtons
@@ -52,7 +52,7 @@ export default function ContentsScreen() {
             { value: "eventos", label: "Eventos" },
             { value: "exposicoes", label: "Exposições" },
           ]}
-          
+
         />
       </View>
 

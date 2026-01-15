@@ -72,6 +72,7 @@ export default function LogInPage({navigation}) {
                     <Text style={styles.signUpLink}>Cadastre-se</Text>
                 </TouchableOpacity>
             </View>
+            <Text style={{fontSize:12, marginBottom: -40, marginTop: 70, alignSelf:'center'}}>Produzido por ESO Design</Text>
         </View>
     )
 }

@@ -1,5 +1,10 @@
 export default {
-    preto: '#000',
     branco: '#FFF',
-    verde: '#0d3112ff',
+    preto: '#0000',
+    verdeClaro: '#E0ECDF',
+    verdeMedio: '#52804C',
+    verdeEscuro:'#283F25',
+    verdeQuasePreto: '#1D1B20',
+
+
 };

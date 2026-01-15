@@ -1,24 +1,22 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, ScrollView, TouchableOpacity } from "react-native";
 import EventCard from "../components/EventCard";
-import BottomNavigationComponent from "../components/layout/BottomNavigationComponent";
 import { SafeAreaView } from "react-native-safe-area-context";
+import BottomNavigationComponent from "../components/layout/BottomNavigationComponent";
 
 const HomePage = ({ navigation }) => {
     return (
         <SafeAreaView style={{flex:1}}>
             <View style={{flex:1}}>
                 <ScrollView style={styles.container}>
-
-                    {/* Header */}
                     <View style={styles.header}>
                         <Text style={styles.title}>CATIVA</Text>
 
                         <View style={styles.userRow}>
-                            <Text style={styles.helloText}>Olá, Maria Thaynara!</Text>
+                            <Text style={styles.helloText}>Olá, Marcos!</Text>
 
                             <View style={styles.xpBadge}>
-                                <Text style={styles.xpText}>⭐ 120 XP</Text>
+                                <Text style={styles.xpText}>☆ 120 XP</Text>
                             </View>
                         </View>
 
@@ -92,7 +90,8 @@ const HomePage = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                 </ScrollView>
-            <BottomNavigationComponent/>
+
+<BottomNavigationComponent/>
             </View>
         </SafeAreaView>
     

@@ -8,16 +8,6 @@ import BottomNavigationComponent from "../components/layout/BottomNavigationComp
 
 export default function ProfilePage({ navigation }) {
 
-  const handleLogout = () => {
-    signOut(auth)
-      .then(() => {
-        console.log("Usuário deslogou!");
-        navigation.navigate("Login"); 
-      })
-      .catch((error) => {
-        console.error("Erro ao sair: ", error);
-      });
-  };
 
   return (
     <View style={styles.container}>
@@ -60,13 +50,13 @@ export default function ProfilePage({ navigation }) {
 
         {/* Campos de Informação */}
         <View style={styles.infoSection}>
-          <InfoField label="Nome" value="Maria Thaynara Silva" />
-          <InfoField label="Email" value="Mathana@gmail.com" />
-          <InfoField label="Senha" value="************" />
+          <InfoField label="Nome" value="Marcos Devaner" />
+          <InfoField label="Email" value="marcosdevaner@ufc.br" />
+          <InfoField label="Senha" value="*******" />
         </View>
 
         {/* BOTÃO DE SAIR */}
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
+        <TouchableOpacity style={styles.logoutButton} onPress={() => navigation.replace('Login')}>
           <MaterialIcons name="logout" size={24} color="#000" style={{marginRight: 10}}/>
           <Text style={styles.logoutText}>Sair</Text>
         </TouchableOpacity>
