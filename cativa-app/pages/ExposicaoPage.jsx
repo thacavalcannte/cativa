@@ -12,15 +12,13 @@ export default function ExposicaoPage({ navigation }) {
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         
-        {/* --- IMAGEM DE CAPA --- */}
+        {/* IMAGEM DE CAPA */}
         <View style={styles.imageContainer}>
-            {/* Certifique-se de ter a imagem 'expo3.jpg' na pasta assets ou troque o nome aqui */}
             <Image 
                 source={require('../assets/expo3.jpg')} 
                 style={styles.heroImage} 
             />
             
-            {/* Tag L (Livre) - Note que nesta tela NÃO tem a tag "Oficina" */}
             <View style={styles.tagsContainer}>
                 <View style={styles.tagLivre}>
                     <Text style={styles.tagLivreText}>L</Text>
@@ -28,7 +26,7 @@ export default function ExposicaoPage({ navigation }) {
             </View>
         </View>
 
-        {/* --- CONTEÚDO --- */}
+        {/* CONTEÚDO */}
         <View style={styles.content}>
             
             <Text style={styles.title}>
@@ -40,7 +38,7 @@ export default function ExposicaoPage({ navigation }) {
                 Mapear histórias, xilografar memórias. A vida do poeta Cego Aderaldo é aqui revisitada em sua multiplicidade: poeta, cantador e violeiro; pai e filho; exibidor de filmes e comerciante. Sua trajetória mostra como arte e cultura se tornaram resistência frente às adversidades. Uma celebração de sua força criadora e da vitalidade do sertão.
             </Text>
 
-            {/* --- DATAS E HORÁRIOS --- */}
+            {/* DATAS E HORÁRIOS */}
             <View style={styles.infoContainer}>
                 <View style={styles.row}>
                     <MaterialIcons name="calendar-today" size={18} color="black" />
@@ -52,7 +50,7 @@ export default function ExposicaoPage({ navigation }) {
                 </View>
             </View>
 
-            {/* --- LOCAL --- */}
+            {/* LOCAL */}
             <View style={styles.locationContainer}>
                 <View style={styles.locationRow}>
                     <MaterialIcons name="location-on" size={20} color="black" />
@@ -70,8 +68,11 @@ export default function ExposicaoPage({ navigation }) {
                 Para mais informações, acesse o perfil do Instagram da <Text style={{textDecorationLine: 'underline'}}>Casa de Saberes Cego Aderaldo</Text>
             </Text>
 
-            {/* --- BOTÃO CONFIRMAR --- */}
-            <TouchableOpacity style={styles.confirmButton}>
+            {/* BOTÃO CONFIRMAR */}
+            <TouchableOpacity 
+                style={styles.confirmButton}
+                onPress={() => navigation.navigate('ValidateParticipationPage')}
+            >
                 <Text style={styles.confirmButtonText}>Confirmar | +20 XP</Text>
             </TouchableOpacity>
 
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
   tagsContainer: {
     position: 'absolute',
     bottom: -15,
-    right: 20, // A tag L fica na direita
+    right: 20, 
     alignItems: 'flex-end',
   },
   tagLivre: {
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   title: {
-    fontSize: 20, // Um pouco menor pois o titulo é grande
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 15,
     color: '#000',
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     fontSize: 14,
     color: '#444',
-    fontWeight: '500', // Um pouco mais negrito
+    fontWeight: '500', 
   },
   locationContainer: {
     marginBottom: 20,
