@@ -91,8 +91,11 @@ const HomePage = ({ navigation }) => {
                     </View>
                 </ScrollView>
 
-<BottomNavigationComponent/>
+
             </View>
+            <View style={styles.bottomNavContainer}>
+                    <BottomNavigationComponent />
+                </View>
         </SafeAreaView>
     
     );
@@ -106,16 +109,23 @@ const styles = StyleSheet.create({
 
     },
 
+    bottomNavContainer: {
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+    },
+
     header: {
-        marginTop: 40,
+        marginTop: 20,
         marginBottom: 20,
     },
 
     title: {
         textAlign: "center",
         fontSize: 22,
-        fontWeight: "bold",
         marginBottom: 20,
+        
     },
 
     userRow: {
@@ -142,17 +152,17 @@ const styles = StyleSheet.create({
     },
 
     subtitle: {
-        marginTop: 10,
+        marginTop: 20,
         color: "#555",
     },
 
     sectionHeader: {
-        marginTop: 25,
+        marginTop: 20,
         marginBottom: 10,
     },
 
     sectionTitle: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: "bold",
     },
 
